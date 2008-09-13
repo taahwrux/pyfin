@@ -47,8 +47,7 @@ class DataAdapter(object):
             # parse entry to standard 
             temp = DataEntry()
             datestr, temp.open, temp.high, temp.low, temp.close, temp.volume = entry.split(',')
-            y = DateConv()
-            temp.date = y.ToDateObject(datestr)
+            temp.date = DateConv.ToDateObject(datestr)
             con.InsertEntry(temp)
 
         return con
