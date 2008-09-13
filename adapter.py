@@ -1,6 +1,8 @@
 # this is a fetch module for getting historical price of stocks from Google Finance
 
 import urllib
+from container import DataContainer, DataEntry
+from util import DateConv
 
 # "http://finance.google.com/finance/historical?q=NYSE:IBM&output=csv"
 class DataAdapter(object):
@@ -32,13 +34,25 @@ class DataAdapter(object):
         return self.url + "&".join(all)
 
     def Fetch(self):
+        """this function will return DataContainer object""" 
         s = self.Generate()
         f = urllib.urlopen(s)
         data = f.read()
         f.close()
-        print data
-    
-    
+        
+        entries = data.split('\n')[1:-1]
+        con = DataContainer()
+
+        for entry in entries:
+            # parse entry to standard 
+            temp = DataEntry()
+            datestr, temp.open, temp.high, temp.low, temp.close, temp.volume = entry.split(',')
+            y = DateConv()
+            temp.date = y.ToDateObject(datestr)
+            con.InsertEntry(temp)
+
+        return con
+
 
         
         
@@ -49,4 +63,5 @@ if __name__ == "__main__":
     gFin.url = "http://finance.google.com/finance/historical?"
     gFin.InsertItem('q', 'NYSE:IBM')
     gFin.InsertItem('output', 'csv')
-    gFin.Fetch()
+    con = gFin.Fetch()
+    con.ListAll() 
