@@ -62,7 +62,7 @@ class DataContainer(object):
         if isinstance(entry, DataEntry):
             self.__mEntries.append(entry)
 
-    def ListAll(self);
+    def ListAll(self):
         for entry in self.__mEntries:
             print entry.date, entry.open
 if __name__ == "__main__":
