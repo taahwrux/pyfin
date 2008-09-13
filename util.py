@@ -2,8 +2,8 @@
 import datetime
 
 class DateConv(object):
-    def __init__(self):
-        self.__month = {
+    def ToDateObject(str):
+        __month = {
             'Jan':1,
             'Feb':2,
             'Mar':3,
@@ -17,15 +17,16 @@ class DateConv(object):
             'Nov':11,
             'Dec':12}
 
-    def ToDateObject(self, str):
-        """12-Sep-2008"""
         temp = str.split('-')
         temp.reverse()
         year, month, date = temp
-        month_int = self.__month[month]
-        return datetime.date(int(year), month_int, int(date))
+        # YY to YYYY
+        year_int = int("20" + year)
+        month_int = __month[month]
+
+        return datetime.date(year_int, month_int, int(date))
+    ToDateObject = staticmethod(ToDateObject)
 
 if __name__ == "__main__":
-    x = DateConv()
-    y = x.ToDateObject('12-Sep-2008')
+    y = DateConv.ToDateObject('12-Sep-08')
     print y.isoformat()
