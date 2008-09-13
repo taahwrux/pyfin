@@ -3,7 +3,7 @@
 import urllib
 
 # "http://finance.google.com/finance/historical?q=NYSE:IBM&output=csv"
-class DataAdaptor(object):
+class DataAdapter(object):
     def __init__(self):
         self.__mURL = ""
         self.__mData = None
@@ -45,7 +45,7 @@ class DataAdaptor(object):
     
     
 if __name__ == "__main__":
-    gFin = DataAdaptor()
+    gFin = DataAdapter()
     gFin.url = "http://finance.google.com/finance/historical?"
     gFin.InsertItem('q', 'NYSE:IBM')
     gFin.InsertItem('output', 'csv')
