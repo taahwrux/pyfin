@@ -1,6 +1,6 @@
 import datetime
 
-class DataContainer(object):
+class DataEntry(object):
     def __init__(self):
         self.__mDate = None
         self.__mOpen = None
@@ -53,6 +53,18 @@ class DataContainer(object):
     volume = property(getVolume, setVolume)
 
 
+class DataContainer(object):
+    def __init__(self):
+        self.__mEntries = []
+        self.__mTicker = ""
+
+    def InsertEntry(self, entry):
+        if isinstance(entry, DataEntry):
+            self.__mEntries.append(entry)
+
+    def ListAll(self);
+        for entry in self.__mEntries:
+            print entry.date, entry.open
 if __name__ == "__main__":
     x = DataContainer()
     x.date = datetime.date(2008, 11, 1)
