@@ -1,5 +1,5 @@
 from container import DataEntry, DataContainer
-from logic.hpr import DailyHPR
+from logic.finance import DailyHPR
 
 class DataAnalyzer(object):
     def __init__(self):
@@ -12,4 +12,4 @@ class DataAnalyzer(object):
         self.__mSrc = src
     src = property(getSrc, setSrc)
 
-    
+
