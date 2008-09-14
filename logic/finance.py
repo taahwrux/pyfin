@@ -16,19 +16,14 @@ def GAverage(li):
     if not isinstance(li, list):
         print "Not a list object"
         return
-
-    prod = 1
-    for x in li:
-        prod = prod * (x + 1)
+    
+    prod = reduce(lambda x, y: (x+1)*(y+1), li)
     
     nrt = (1/float(len(li)))
     return math.pow(prod, nrt) - 1
 
 
 if __name__ == "__main__":
-    a = [-0.5, 1.0]
-    print len(a)
-    re = GAverage(a)
-    print ToPercent(re)
+    a = [.5, 1, .8, .5]
+    print ToPercent(GAverage(a))
 
-    
