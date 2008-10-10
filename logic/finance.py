@@ -1,5 +1,24 @@
 import math
 
+# Time Value of Money Functions
+
+def PV(nper, rate, pmt, fv):
+    pass
+
+def FV(nper, rate, pv, pmt):
+    pass
+
+def NPer(rate, pv, pmt, fv):
+    pass
+
+def Rate(nper, pv, pmt, fv):
+    pass
+
+def Pmt(nper, rate, pv, fv):
+    pass
+
+#################################
+
 def ToPercent(dec):
     if dec > 1 or dec < 0:
         return dec
